@@ -28,7 +28,7 @@ def purchase_dog_product(request, dog_product_id):
         return redirect("purchase_detail", purchase.id)
     elif dog_product.quantity == 0:
         messages.error(request, f"{dog_product.name} is out of stock")
-        return redirect("dog_product_detail.html", dog_product_id)
+        return redirect("dog_product_detail", dog_product_id)
 
 
 def purchase_detail(request, purchase_id):
@@ -45,8 +45,9 @@ def new_dog_tag(request):
             owner_name = form.cleaned_data["owner_name"]
             dog_name = form.cleaned_data["dog_name"]
             dog_birthday = form.cleaned_data["dog_birthday"]
+            owner_phone = form.cleaned_data["owner_phone"]
             DogTag.objects.create(
-                owner_name=owner_name, dog_name=dog_name, dog_birthday=dog_birthday
+                owner_name=owner_name, dog_name=dog_name, dog_birthday=dog_birthday, owner_phone=owner_phone
             )
             return redirect("dog_tag_list")
         else:
