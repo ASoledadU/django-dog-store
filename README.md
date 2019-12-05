@@ -1,0 +1,3 @@
+# django-dog-store
+
+coming soon to a GitHub near you...
